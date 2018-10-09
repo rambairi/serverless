@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: AWS ServlerLess Model
+
+Resources:
+    Products:
+        Type: AWS::Serverless::Function
+        Properties:
+            Handler: aws.sam.ServerLessAppHandler::handleRequest
+            Runtime: java8
+            Timeout: 300
+            CodeUri: ./build/distributions/serverless-app-1.0.0.zip
+            
+            Events:
+                getPractices:
+                    Type: Api
+                    Properties:
+                        Path: /serverless
+                        Method: post
+                       
+            
+           
